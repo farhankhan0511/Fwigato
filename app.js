@@ -2,31 +2,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client"
 
-const parent=React.createElement("div",{id:"parent"},
-    [React.createElement("div",{id:"child"},
-        [React.createElement("h1",{id:"1"},"Fuck off"),React.createElement("h1",{id:"2"},"Bitch")]
-    ),
-    React.createElement("div",{id:"child2"},
-        [React.createElement("h1",{id:"12"},"Fuck off"),React.createElement("h1",{id:"22"},"Bitch")]
-    )]
-    )
+//react element just like dom elements
+const oilte=<div><h1>Fuck u</h1></div>
+
+const Title=()=>(
+    <div>
+        {oilte}
+        <h1>React functional component</h1>
+        </div>
+)
+    
+    
 
 
+const Jsxhaeding=()=>(
+     <div id="Container">
+    <h1>Namaste React using JSX </h1>
+    
+    <Title/>
+    </div>
+)
 
+const root=ReactDOM.createRoot(document.getElementById("root"));
 
-console.log(parent);
-
-
-
-
-
-
-
-
-
-
-
-
-const heading=React.createElement("h1",{id:"head"},"Helloworld from React!")
-    const root=ReactDOM.createRoot(document.getElementById("root"))
-    root.render(parent);
+root.render(<Jsxhaeding/>);
