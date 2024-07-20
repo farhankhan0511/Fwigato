@@ -10,6 +10,7 @@
     margin-inline: 10px;
    
 }
+
 .logo{
     height: 80px;
     
@@ -34,25 +35,48 @@
 .nav-items ul li button:hover{
     background-color: #ededed;
 }
-.restuarant-container{
+.searchbox{
+    margin: 10px;
+    padding: 5px;
+    font-size: 17px;
+}
+.searchbtn{
+    padding: 4px;
+    font-size: 17px;
+}
+.filter{
+    display: flex;
+}
+
+.toprated{
+    font-size: 17px;
+    padding: 5px;
+    margin: 9px;
+    cursor: pointer;
+}
+.toprated:hover,.searchbtn:hover{
+    background-color: #ededed;
+}
+.restuarant-container,.ShimmerContainer,.menucontain{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin: 10px;
 }
-.restuarantcard{
+.restuarantcard,.Shimmercards{
     width: 300px;
     height: 350px;
     display: flex;
     flex-direction: column;
-    
+    color: black;
     background-color:#ededed;
     /* padding: 5px; */
     margin: 7px;
     border-radius: 5px;
   
 }
-.restuarantcard:hover{
+.restuarantcard:hover,.dishcard:hover{
     border: 2px solid black;
     cursor: pointer;
     transform: scale(0.94);
@@ -61,4 +85,46 @@
     width: 100%;
     height: 70%;
     
+}
+.Hotel{
+    display: flex;
+    padding: 8px;
+    margin: 8px;
+    /* margin-inline: 30%; */
+    justify-content: space-between;
+    border: 2px solid black;
+    border-radius: 4px;
+}
+.Hotelimg{
+    width: 155px;
+}
+.menu{
+    margin-inline:10% ;
+}
+.dishcardinfo{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    justify-content: space-between;
+}
+.dishimage{
+    width: 40%;
+}
+.dishcard{
+    width: 90%;
+    height: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    background-color:#ededed;
+    padding: 5px;
+    margin: 7px;
+    border-radius: 5px;
+  
+}
+
+.link{
+    text-decoration: none;
+    text-emphasis-color: none;
 }
