@@ -27,18 +27,20 @@ const {resId}=useParams();
    
  return(
     <div className="menu">
-        <div className="Hotel">
+        <div className="flex w-3/4 items-center border border-solid border-black justify-around mx-auto mt-5">
         <div>
-        <h1>{restinfo?.data?.cards[2]?.card?.card?.info.name}</h1>
+        <h1 className="font-bold">{restinfo?.data?.cards[2]?.card?.card?.info.name}</h1>
         <h3>{restinfo?.data?.cards[2]?.card?.card?.info.cuisines.join(",")}</h3>
         </div>
         <div>
-            <img className="Hotelimg" src={CDN_URL+restinfo?.data?.cards[2]?.card?.card?.info.cloudinaryImageId}/>
+            <img className="w-40" src={CDN_URL+restinfo?.data?.cards[2]?.card?.card?.info.cloudinaryImageId}/>
         </div>
-
+    
         </div>
-        <h2>Menu</h2>
-        <div className="menucontain">
+       
+        <div className="flex flex-col items-center">
+        <div className="justify-center items-center
+        m-10"><h2 className=" font-bold">Menu</h2></div>
         {menuDish?.map((menu) => (
                 <Dishcard 
                 key={menuDish?.card?.info?.id}

@@ -11,20 +11,20 @@ const Header=()=>{
 
     
 
-    return <div className="header">
-        <div className="Logocontainer">
+    return <div className="flex justify-between bg-pink-100">
+        <div >
             <img
-             className="logo" src={myimage}/>
+             className="w-40 shadow-md" src={myimage}/>
         </div>
-        <div className="nav-items">
-            <ul >
-                <li><Link to="/">Home</Link></li>
-                <li> <Link to="/Grocery">Grocery</Link></li>
-                <li>
+        <div className="flex items-center">
+            <ul className="flex m-4">
+                <li className="px-2"><Link to="/">Home</Link></li>
+                <li className="px-2"> <Link to="/Grocery">Grocery</Link></li>
+                <li className="px-2">
                     <Link to="/About">About Us</Link></li>
-                <li> <Link to="/Contact">Contact Us</Link></li>
-                <li><button>Cart</button></li>
-                <li><button onClick={()=>{
+                <li className="px-2"> <Link to="/Contact">Contact Us</Link></li>
+                <li className="px-2"><button >Cart</button></li>
+                <li className="px-2"><button onClick={()=>{
                     if (btnname=="Login"){
                         setbtnname("Logout")
                     }

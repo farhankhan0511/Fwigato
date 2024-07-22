@@ -38,16 +38,16 @@ return (resl.length===0)?
 
 
     <div className="body">
-        <div className="filter">
+        <div className="flex">
           
             <div>  
-            <input type="text"  className="searchbox" onChange={(e)=>setinpval(e.target.value)
+            <input type="text"  className=" p-1 m-4 border border-solid border-black  " onChange={(e)=>setinpval(e.target.value)
                 
             } value={inpval}
             
             />
             
-            <button
+            <button className="px-4 py-2 bg-green-200 m-4 cursor-pointer hover:bg-green-300 rounded-lg"
              onClick={()=>{
                     
                    const searched=reslbug.filter((res)=>((res.info.name).toLowerCase()).includes(inpval.toLowerCase()))
@@ -61,10 +61,10 @@ return (resl.length===0)?
                    
                     
 
-            }} className="searchbtn">Search</button>
+            }} >Search</button>
             </div>
 
-           <button className="toprated" onClick={()=>{
+           <button className="px-4 py-2 bg-green-200 m-4 cursor-pointer hover:bg-green-300 rounded-lg" onClick={()=>{
             const filterdlist=resl.filter((res)=> res.info.avgRating>4.5 );
             setfilteredlists(filterdlist);
             
@@ -72,7 +72,7 @@ return (resl.length===0)?
            
             }>Top Rated Restaurants</button>
         </div>
-        <div className="restuarant-container">
+        <div className="flex flex-wrap justify-around">
         {
         filterdlists.map((restuarant) => (
          <Link className="link" to={"/restaurants/"+restuarant.info.id} > <Restuarantcard key={restuarant.info.id} resdata={restuarant} /></Link>
