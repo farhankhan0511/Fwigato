@@ -3,9 +3,11 @@ import React,{useState,useEffect}  from "react";
 import Restuarantcard from "./Restuarantcard"
 
 import Shimmer from "./Shimmer";
-import Restuarantmenu from "./Restuarantmenu";
+
 import { Link } from "react-router-dom";
-import { SWIGGYAPI } from "../../utils/constants";
+
+import useOnlineStatus from "../../utils/useOnlineStatus";
+import useSwiggyApi from "../../utils/useSwiggyApi";
 
  
 
@@ -16,37 +18,26 @@ export const Body=()=>{
     const [inpval,setinpval]=useState("")
     const [filterdlists,setfilteredlists]=useState(resl)
 
+    const data = useSwiggyApi();
 
-const fetchdata=async ()=>{
+    useEffect(() => {
+        if (data) {
+            setresl(data);
+            setfilteredlists(data);
+        }
+    }, [data]);
     
-    try{
-        const data= await fetch(SWIGGYAPI)
-    
-    const jsondata=await data.json();
-    setresl(jsondata?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setfilteredlists(jsondata?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-
-
-    console.log(jsondata)
-
-    }
-    catch(err){
-        console.log(err)
-    }
-   
-}
-
- 
-useEffect(()=>{
-    fetchdata();
-},[]);
-
-
-if (!resl || resl.length===0){
-    return <Shimmer/>
-}
     let reslbug=resl
-    return <div className="body">
+
+ const onlinestatus=useOnlineStatus()
+if(onlinestatus===false){
+    return <h1>You are offline please check your connection</h1>
+}
+return (resl.length===0)?
+     <Shimmer/>:
+
+
+    <div className="body">
         <div className="filter">
           
             <div>  
@@ -96,3 +87,4 @@ if (!resl || resl.length===0){
     </div>
         }
 export default Body;
+        

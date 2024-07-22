@@ -3,36 +3,29 @@ import reactDom from 'react-dom'
 import { useParams } from 'react-router'
 import Dishcard from './Dishcard'
 import Shimmer from './Shimmer'
-import { CDN_URL, MENU_API } from '../../utils/constants'
+import { CDN_URL, } from '../../utils/constants'
+import useRestaurantMenu from '../../utils/useRestaurantMenu'
 
 const Restuarantmenu = () => {
-const [restinfo,setrestinfo]=useState([])
+const [menuDish,setmenuDish]=useState(null)
 const {resId}=useParams();
-    const menu=async ()=>{
-        try{
-            datas=await fetch(MENU_API+resId)
-        datajson=await datas.json()
-        setrestinfo(datajson)
-        
        
-     
+
+  const restinfo=useRestaurantMenu(resId)
+
+  useEffect(() => {
+        if (restinfo?.data?.cards) {
+            setmenuDish(restinfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards);
         }
-        catch(err){
-            console.log(err)
-        }
-        
+    }, [restinfo]);
+
+    if (!restinfo) {
+        return <Shimmer />;
     }
-    useEffect(()=>{ 
-        menu();
-    },[])
-const menuDish = restinfo.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards;
 
-
-
-return (restinfo?.length===0)?
-<Shimmer/>:
    
- (
+   
+ return(
     <div className="menu">
         <div className="Hotel">
         <div>
