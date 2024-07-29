@@ -38,9 +38,9 @@ const {resId}=useParams();
     
         </div>
        
-        <div className="flex flex-col items-center">
         <div className="justify-center items-center
-        m-10"><h2 className=" font-bold">Menu</h2></div>
+        m-10"><h1 className=" font-bold">Menu</h1></div>
+        <div className="flex flex-wrap">
         {menuDish?.map((menu) => (
                 <Dishcard 
                 key={menuDish?.card?.info?.id}

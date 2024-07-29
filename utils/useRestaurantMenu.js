@@ -8,7 +8,7 @@ const useRestaurantMenu=(resId)=>{
         const datajson=await datas.json();
         
         setrestinfo(datajson);
-       
+       console.log(datajson)
      
         }
         catch(err){

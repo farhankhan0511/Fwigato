@@ -1,6 +1,6 @@
 
 import React,{useState,useEffect}  from "react";
-import Restuarantcard from "./Restuarantcard"
+import Restuarantcard,{withlabel} from "./Restuarantcard"
 
 import Shimmer from "./Shimmer";
 
@@ -13,7 +13,7 @@ import useSwiggyApi from "../../utils/useSwiggyApi";
 
 
 export const Body=()=>{
-   
+    const RestaurantNear=withlabel(Restuarantcard);
     const [resl,setresl]=useState([]);
     const [inpval,setinpval]=useState("")
     const [filterdlists,setfilteredlists]=useState(resl)
@@ -75,7 +75,13 @@ return (resl.length===0)?
         <div className="flex flex-wrap justify-around">
         {
         filterdlists.map((restuarant) => (
-         <Link className="link" to={"/restaurants/"+restuarant.info.id} > <Restuarantcard key={restuarant.info.id} resdata={restuarant} /></Link>
+         <Link className="link" to={"/restaurants/"+restuarant.info.id} > 
+         
+            {(restuarant?.info?.sla?.deliveryTime<=25)?<RestaurantNear key={restuarant.info.id} resdata={restuarant} />:
+         <Restuarantcard key={restuarant.info.id} resdata={restuarant} />
+            }
+        
+         </Link>
         ))} 
         
          

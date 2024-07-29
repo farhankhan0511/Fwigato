@@ -16,7 +16,7 @@ const useSwiggyApi = () => {
         const jsondata=await pata.json();
        setdata(jsondata)
        
-        
+        console.log(jsondata)
     
         }
         catch(err){

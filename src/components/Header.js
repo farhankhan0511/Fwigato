@@ -1,14 +1,17 @@
 
 
 import React,{useState} from "react";
+import { reactHooksModule } from "@reduxjs/toolkit/query/react";
 
 import ReactDOM from "react-dom/client"
 import myimage from "../pictures/image.png"
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 const Header=()=>{
     const [btnname,setbtnname]=useState("Login")
-
+    const cart=useSelector((store)=>store.cart.items)
+console.log(cart)
     
 
     return <div className="flex justify-between bg-pink-100">
@@ -23,7 +26,7 @@ const Header=()=>{
                 <li className="px-2">
                     <Link to="/About">About Us</Link></li>
                 <li className="px-2"> <Link to="/Contact">Contact Us</Link></li>
-                <li className="px-2"><button >Cart</button></li>
+                <li className="px-2 font-bold text-lg">  <Link to="/Cart"> <button >Cart({cart.length})</button></Link>                </li>
                 <li className="px-2"><button onClick={()=>{
                     if (btnname=="Login"){
                         setbtnname("Logout")

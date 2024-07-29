@@ -1,21 +1,17 @@
 
 import React from "react";
 import {CDN_URL} from "../../utils/constants"
+import { removeitem } from "../../utils/cartSlice";
 import { useDispatch } from "react-redux";
-import { additem } from "../../utils/cartSlice";
 
 
 
 
 
-
-const Dishcard = (props) => {
+const Cartitem = (props) => {
     const {dishdata}=props;
-    const dispatch=useDispatch();
-    const handleitem=(item)=>{
-       
-            dispatch(additem(item))
-    }
+    const dispatch =useDispatch();
+    
     
      return <div className="w-[253px] p-2 m-6 bg-gray-100  hover:scale-95 hover:bg-gray-200 relative" >
          
@@ -27,14 +23,15 @@ const Dishcard = (props) => {
          <h3 className="m-4">Type:   {dishdata?.card?.info?.itemAttribute?.vegClassifier}</h3>
          <h3 className="m-4"
           >Rating: {dishdata?.card?.info?.ratings?.aggregatedRating?.rating} stars</h3>
-           <button  onClick={()=>{
-            handleitem(dishdata);
+           
+            <button  onClick={()=>{
+            dispatch(removeitem());
 
-           }} className="bg-black text-white rounded-md absolute top-40 left-24 px-2 py-1 z-10 hover:bg-slate-500">Add+</button>
+           }} className="bg-black text-white rounded-md absolute top-40 left-24 px-2 py-1 z-10 hover:bg-slate-500">Remove</button>
           
         
       
      </div>
 }
 
-export default Dishcard;
+export default Cartitem;
